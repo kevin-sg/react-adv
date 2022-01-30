@@ -1,11 +1,9 @@
 import Navigation from "./routers/Navigation";
 
-function App() {
-	return (
-		<>
-			<Navigation />
-		</>
-	);
-}
+const App = () => (
+	<>
+		<Navigation />
+	</>
+);
 
 export default App;

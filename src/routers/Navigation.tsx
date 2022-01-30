@@ -1,5 +1,6 @@
 import { Suspense } from "react";
 import { BrowserRouter as Router, Routes, Route, NavLink, Navigate } from "react-router-dom";
+import ShopingPage from "../02-components-patterns/pages/ShopingPage";
 
 import logo from "../logo.svg";
 
@@ -16,7 +17,7 @@ const Navigation = () => {
 									to="/"
 									className={({ isActive }) => (isActive ? "nav-active" : "")}
 								>
-									Home
+									Shopping
 								</NavLink>
 							</li>
 							<li>
@@ -38,9 +39,10 @@ const Navigation = () => {
 						</ul>
 					</nav>
 					<Routes>
-						<Route path="/" element={<h1>Home</h1>} />
+						<Route path="/" element={<ShopingPage />} />
 						<Route path="/users" element={<h1>User</h1>} />
 						<Route path="/about" element={<h1>About</h1>} />
+
 						<Route path="/*" element={<Navigate to="/" replace />} />
 					</Routes>
 				</div>

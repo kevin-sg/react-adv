@@ -5,35 +5,18 @@ export const useShoppingCart = () => {
 	const [shoppingCart, setShoppingCart] = useState<{ [key: string]: ProductInCart }>({});
 
 	const onProductCountChange = ({ count, product }: { count: number; product: Product }) => {
+		console.log({ count });
 		setShoppingCart((oldShoppingCard) => {
-			// Method count product 1
-			const productInCart: ProductInCart = oldShoppingCard[product.id] || {
-				...product,
-				count: 0,
-			};
+			if (!count) {
+				const { [product.id]: toDelete, ...rest } = oldShoppingCard;
+				return rest;
 
-			if (Math.max(productInCart.count + count, 0) > 0) {
-				productInCart.count += count;
-
-				return { ...oldShoppingCard, [product.id]: productInCart };
+				// Method 2
+				// delete oldShoppingCard[product.id];
+				// return { ...oldShoppingCard };
 			}
 
-			// Delete product
-			const { [product.id]: toDelete, ...rest } = oldShoppingCard;
-			return rest;
-
-			// Method count product 2
-			// if (!count) {
-			// Method 1
-			// const { [product.id]: toDelete, ...rest } = oldShoppingCard;
-			// return rest;
-
-			// Method 2
-			// delete oldShoppingCard[product.id];
-			// return { ...oldShoppingCard };
-			// }
-
-			// return { ...oldShoppingCard, [product.id]: { ...product, count } };
+			return { ...oldShoppingCard, [product.id]: { ...product, count } };
 		});
 	};
 

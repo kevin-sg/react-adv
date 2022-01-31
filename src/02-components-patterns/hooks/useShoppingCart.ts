@@ -5,7 +5,6 @@ export const useShoppingCart = () => {
 	const [shoppingCart, setShoppingCart] = useState<{ [key: string]: ProductInCart }>({});
 
 	const onProductCountChange = ({ count, product }: { count: number; product: Product }) => {
-		console.log({ count });
 		setShoppingCart((oldShoppingCard) => {
 			if (!count) {
 				const { [product.id]: toDelete, ...rest } = oldShoppingCard;

@@ -20,3 +20,8 @@
 	border-color: white;
 	color: white;
 }
+
+.shopping-card {
+	position: fixed;
+	inset: 0px 10px auto auto;
+}
